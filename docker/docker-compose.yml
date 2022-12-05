@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  file-server:
+    container_name: file-server
+    build:
+      context: ../server
+      dockerfile: server.Dockerfile
+      target: server
+    volumes:
+      - ./../server:/src
+    working_dir: /src
+    ports:
+      - "8888:8888"
+    command: [ "uvicorn", "main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8888", "--reload" ]

@@ -1,0 +1,10 @@
+asgiref==3.4.1
+asyncmy==0.2.3
+bcrypt==3.2.2
+fastapi==0.88.0
+hypercorn==0.11.2
+passlib==1.7.4
+py>=1.4.31
+pydantic==1.9.0
+python-multipart==0.0.5
+requests==2.27.1

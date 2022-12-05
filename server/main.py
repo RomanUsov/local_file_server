@@ -8,7 +8,7 @@ from config import SHARED_FILES_FOLDER_NAME
 app = FastAPI()
 
 
-@app.get("/download/{filename}")
+@app.get("/download/{file_name}")
 def download_file(file_name: str):
     """
     Download a file from the `files` folder by file_name.
@@ -21,7 +21,12 @@ def download_file(file_name: str):
     file_path = os.path.join(base_dir, SHARED_FILES_FOLDER_NAME, file_name)
 
     if not os.path.exists(file_path):
-        return JSONResponse({"message": f"File {file_name} does not exist."})
+        return JSONResponse(
+            {
+                "message": f"File with name {file_name} does not exist "
+                           f"in the {SHARED_FILES_FOLDER_NAME} folder."
+            }
+        )
 
     return FileResponse(
         path=file_path,
